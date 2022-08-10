@@ -20,30 +20,30 @@ export default function TodoForm(props){
 
   function handleSubmit(e){
     e.preventDefault()
-    addTodo(inputs)
-    setInputs(initInputs)
+    addTodo(inputs) //sets the inputs -title, desc, img- to the new values
+    setInputs(initInputs) //returns the form to its initial state after adding the todo
   }
 
   const { title, description, imgUrl } = inputs
   return (
     <form onSubmit={handleSubmit}>
-      <input 
-        type="text" 
-        name="title" 
-        value={title} 
-        onChange={handleChange} 
+      <input
+        type="text"
+        name="title"
+        value={title}
+        onChange={handleChange}
         placeholder="Title"/>
-      <input 
-        type="text" 
-        name="description" 
-        value={description} 
-        onChange={handleChange} 
+      <input
+        type="text"
+        name="description"
+        value={description}
+        onChange={handleChange}
         placeholder="Description"/>
-      <input 
-        type="text" 
-        name="imgUrl" 
-        value={imgUrl} 
-        onChange={handleChange} 
+      <input
+        type="text"
+        name="imgUrl"
+        value={imgUrl}
+        onChange={handleChange}
         placeholder="Image Url"/>
       <button>Add Todo</button>
     </form>
