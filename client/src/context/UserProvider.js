@@ -18,7 +18,8 @@ export default function UserProvider(props){
     user: JSON.parse(localStorage.getItem("user")) || {},
     //before setting the token to an empty string, let's check if the token already exists in the local Storage, otherwise set it as an empty string
     token: localStorage.getItem("token") || "",
-    todos: []
+    todos: [],
+    errMsg: ""
   }
 
   const [userState, setUserState] = useState(initState)
@@ -37,7 +38,7 @@ export default function UserProvider(props){
         token
       }))
     })
-      .catch(err => console.log(err.response.data.errMsg))
+      .catch(err => handleAuthErr(err.response.data.errMsg))
   }
 
   function login(credentials){
@@ -54,7 +55,7 @@ export default function UserProvider(props){
           token
         }))
       })
-      .catch(err => console.log(err.response.data.errMsg))
+      .catch(err => handleAuthErr(err.response.data.errMsg))
   }
 
   function logout(){
@@ -67,17 +68,25 @@ export default function UserProvider(props){
     })
   }
 
-//Get users Todos
-function getUserTodos(){
+  //display error message in the front end
+  function handleAuthErr(errMsg){
+    setUserState(prevState => ({
+      ...prevState,
+      errMsg
+    }))
+  }
+
+  //Get users Todos
+  function getUserTodos(){
   //since it's an authenticated request we need to use User Axios
-  userAxios.get("/api/todo/user")
-    .then(res => {
-      setUserState(prevState => ({
-        ...prevState,
-        todos: res.data
-      }))
-    })
-    .catch(err => console.log(err.response.data.errMsg))
+    userAxios.get("/api/todo/user")
+      .then(res => {
+        setUserState(prevState => ({
+          ...prevState,
+          todos: res.data
+        }))
+      })
+      .catch(err => console.log(err.response.data.errMsg))
 }
 
 
