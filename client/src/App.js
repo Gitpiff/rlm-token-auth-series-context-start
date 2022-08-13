@@ -20,7 +20,7 @@ export default function App(){
         <Route
           path="/profile"
           element={
-            <ProtectedRoute token={token}>
+            <ProtectedRoute token={token} redirectTo="/">
               <Profile />
             </ProtectedRoute>
           }
@@ -28,7 +28,7 @@ export default function App(){
         <Route
           path="/public"
           element={
-            <ProtectedRoute token={token}>
+            <ProtectedRoute token={token} redirectTo="/">
             <Public />
           </ProtectedRoute>
         }
