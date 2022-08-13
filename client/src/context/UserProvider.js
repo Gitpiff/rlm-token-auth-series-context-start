@@ -76,6 +76,14 @@ export default function UserProvider(props){
     }))
   }
 
+  //reset Auth Error, so it does not stay on the page all the time, once the error message gets displayed, it will stay there until the page gets refreshed, once that happens the message won't be there anymore
+  function resetAuthErr(){
+    setUserState(prevState => ({
+      ...prevState,
+      errMsg:""
+    }))
+  }
+
   //Get users Todos
   function getUserTodos(){
   //since it's an authenticated request we need to use User Axios
@@ -110,7 +118,8 @@ export default function UserProvider(props){
         signup,
         login,
         logout,
-        addTodo
+        addTodo,
+        resetAuthErr
       }}
     >
       {props.children}
