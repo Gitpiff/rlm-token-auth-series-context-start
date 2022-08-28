@@ -7,6 +7,7 @@ export default function Todo(props){
       <h1>{ title }</h1>
       <h3>{ description }</h3>
       <img src={imgUrl} alt={imgUrl} width={300}/>
+      <button>Delete</button>
     </div>
   )
 }
