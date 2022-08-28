@@ -10,7 +10,7 @@
 
 .app {
   background-color: #eee9;
-  background-image: url("../images/protesta1.png");
+  /* //background-image: url("../images/protesta1.png"); */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
